@@ -1,0 +1,41 @@
+// Classe abstrata Transportadora
+abstract class Transportadora {
+    // Método abstrato calculaFrete
+    public abstract double calculaFrete(int altura, int largura);
+}
+
+// Classe TransporteNautico que herda de Transportadora
+class TransporteNautico extends Transportadora {
+    @Override
+    public double calculaFrete(int altura, int largura) {
+        // Cálculo para transporte náutico
+        return 0.10 * (altura + largura);
+    }
+}
+
+// Classe TransporteTerrestre que herda de Transportadora
+class TransporteTerrestre extends Transportadora {
+    @Override
+    public double calculaFrete(int altura, int largura) {
+        // Cálculo para transporte terrestre
+        return 0.20 * (altura / largura);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Instanciando a classe TransporteNautico
+        Transportadora transporteNautico = new TransporteNautico();
+        int alturaNautico = 10;
+        int larguraNautico = 5;
+        double freteNautico = transporteNautico.calculaFrete(alturaNautico, larguraNautico);
+        System.out.println("Frete para Transporte Náutico: " + freteNautico);
+
+        // Instanciando a classe TransporteTerrestre
+        Transportadora transporteTerrestre = new TransporteTerrestre();
+        int alturaTerrestre = 8;
+        int larguraTerrestre = 4;
+        double freteTerrestre = transporteTerrestre.calculaFrete(alturaTerrestre, larguraTerrestre);
+        System.out.println("Frete para Transporte Terrestre: " + freteTerrestre);
+    }
+}
